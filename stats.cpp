@@ -2,11 +2,11 @@
 #include "algorithm"
 #include "numeric"
 namespace Statistics {
-Stats Statistics::ComputeStatistics(const std::vector<double>& numList) {
+Stats ComputeStatistics(const std::vector<double>& numList) {
     //Implement statistics here
 	Stats statObj;
-	double maximum = NAN;
-	double minimum = NAN;
+	double maximum = 0.0;
+	double minimum = 0.0;
     double sum = 0.0;
 
 	if(numList.size() != 0){
@@ -15,6 +15,7 @@ Stats Statistics::ComputeStatistics(const std::vector<double>& numList) {
 	}
 	statObj.max = maximum;
 	statObj.min = minimum;
+
 	if (numList.size() != 0) {
     for (const double &i: numList) {
         sum += (double)i;

@@ -2,11 +2,11 @@
 #include "algorithm"
 #include "numeric"
 namespace Statistics {
-    Stats ComputeStatistics(const std::vector<double>& numList);
 class Stats {
 	public:
 		double average, min, max;
 };
+    Stats ComputeStatistics(const std::vector<double>& numList);
 } // namespace Statistics
 
 class IAlerter
