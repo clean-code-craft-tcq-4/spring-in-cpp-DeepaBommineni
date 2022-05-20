@@ -7,7 +7,7 @@
 
 TEST_CASE("reports average, minimum and maximum") {
     auto computedStats = Statistics::ComputeStatistics({1.5, 8.9, 3.2, 4.5});
-    float epsilon = 0.001;
+    double epsilon = 0.001;
     REQUIRE(std::abs(computedStats.average - 4.525) < epsilon);
     REQUIRE(std::abs(computedStats.max - 8.9) < epsilon);
     REQUIRE(std::abs(computedStats.min - 1.5) < epsilon);
@@ -20,6 +20,7 @@ TEST_CASE("average is NaN for empty array") {
     
     //Design the REQUIRE statement here.
     //Use http://www.cplusplus.com/reference/cmath/isnan/
+    REQUIRE(std::isnan(computedStats.average));
 }
 
 TEST_CASE("raises alerts when max is greater than threshold") {
@@ -31,6 +32,6 @@ TEST_CASE("raises alerts when max is greater than threshold") {
     StatsAlerter statsAlerter(maxThreshold, alerters);
     statsAlerter.checkAndAlert({99.8, 34.2, 4.5, 6.7});
 
-    REQUIRE(emailAlert.emailSent);
-    REQUIRE(ledAlert.ledGlows);
+    REQUIRE(statsAlerter.emailAlert.emailSent);
+    REQUIRE(statsAlerter.ledAlert.ledGlows);
 }
